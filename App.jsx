@@ -4,12 +4,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './src/screens/HomeScreen';
 import AboutScreen from './src/screens/AboutScreen';
 import ContactScreen from './src/screens/ContactScreen';
+import CounterScreen from './src/screens/CounterScreen';
 
 const RootStack = createNativeStackNavigator( {
   screens: {
     Home: HomeScreen,
     About: AboutScreen,
-    Contact: ContactScreen
+    Contact: ContactScreen,
+    Counter: CounterScreen
   }
 } );
 

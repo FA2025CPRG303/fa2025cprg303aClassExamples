@@ -1,25 +1,49 @@
 import { useNavigation } from "@react-navigation/native";
-import { Button, FlatList, Text, View } from "react-native";
+import { useState } from "react";
+import { Button, Text, View } from "react-native";
+import VolunteerDisplayComp from "../components/volunteer-display";
+
+let people = [
+    {
+        fname: 'John',
+        age: 30,
+        city: 'Calgary'
+    },
+    {
+        fname: 'Alice',
+        age: 25,
+        city: 'Edmonton'
+    },
+    {
+        fname: 'Frank',
+        age: 35,
+        city: 'Lethbridge'
+    }
+];
+
+let person = {
+    fname: 'Jane',
+    age: 20,
+    city: 'Calgary'
+}
 
 export default function AboutScreen() {
-
+    const [volunteerList, setVolunteerList] = useState(people);
     const nav = useNavigation();
-
-    let myArray = [];
-    for (let i = 0; i < 400; i++) {
-        let thisText = `Item #${i}`;
-        myArray.push(thisText);
+    function addPerson(){
+        let newVolunteerList = [...volunteerList, person];
+        setVolunteerList(newVolunteerList);
     }
-
     return(
         <View>
             <Text>About Screen!</Text>
             <Button title="Go to Contact" onPress={ () => nav.navigate('Contact') } />
-            <FlatList
-                data={myArray}
-                renderItem={ ({item}) => <Text style={{fontSize:20}}>{item}</Text> }
-                keyExtractor={ (item, index) => index }
-            />
+            {
+                volunteerList.map( (volunteer, index) => (
+                    <VolunteerDisplayComp volunteerObj={volunteer} key={index} />
+                ) )
+            }
+            <Button title="Add Person" onPress={addPerson} />
         </View>
     )
 }
