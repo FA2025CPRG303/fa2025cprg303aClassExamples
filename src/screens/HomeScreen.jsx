@@ -11,6 +11,7 @@ export default function HomeScreen() {
         <Text style={{ fontSize: 30, textAlign: 'center', color: 'blue' }}>
           Hello World!
         </Text>
+        <Button title="Dog Adoption" onPress={() => nav.navigate('Adopt')} />
         <Button title="Go to Counter" onPress={() => nav.navigate('Counter')} />
         <Button title="Go to About" onPress={() => nav.navigate('About')} />
         {/* <Button title="Go Back" onPress={ () => nav.goBack() } /> */}
