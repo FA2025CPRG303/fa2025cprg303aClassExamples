@@ -1,8 +1,10 @@
 import { Button, Text, View } from "react-native";
 import CounterDisplayComp from "../components/counter-display";
 import { useState } from "react";
+import { useMyTheme } from "../context/theme-context";
 
 export default function CounterScreen(){
+    const {themeStyles} = useMyTheme();
     const [count, setCount] = useState(0);
 
     // setCount(1); // Can't call setter directly in the render
@@ -13,7 +15,7 @@ export default function CounterScreen(){
     const decrement = () => setCount(count - 1);
 
     return(
-        <View>
+        <View style={themeStyles.container}>
             {/* <CounterDisplayComp countDisplay={count} /> */}
             <CounterDisplayComp counterInt={count} />
             <Button title="Increment" onPress={increment} />

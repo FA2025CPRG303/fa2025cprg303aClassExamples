@@ -7,15 +7,19 @@ import {
   TextInput,
   View,
 } from 'react-native';
+import { useMyTheme } from '../context/theme-context';
 
 export default function MyFirstComponent() {
+
+  const {themeStyles} = useMyTheme();
+
   function sayHello() {
     alert('Hello World!');
   }
 
   return (
     <View style={{padding:10}}>
-      <Text style={myStyles.myText}>
+      <Text style={[myStyles.myText, themeStyles.text]}>
         This is my first react native component.
       </Text>
       <Image
